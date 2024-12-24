@@ -52,7 +52,7 @@ export const Intro = () => {
             <div className="w-2 h-4 lg:h-6 bg-[#F0EFEB] rounded-full mt-4 animate-bounceDown"></div>
           </div>
         </div>
-        <div className="h-auto flex items-center justify-center bg-[#F0EFEB]">
+        <div className="min-w-screen h-auto flex items-center justify-center bg-[#F0EFEB]">
           <Image src="/mountain.svg" alt="about" width={6020} height={1080} />
         </div>
       </div>
