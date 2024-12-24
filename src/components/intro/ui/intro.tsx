@@ -44,9 +44,12 @@ export const Intro = () => {
           </span>
           <h2 className="text-4xl lg:text-8xl font-bold z-40 text-center">
             프론트엔드 개발자&nbsp;
-            <span className="rainbow-hover">김승원</span>
+          </h2>
+          <h2 className="text-4xl lg:text-8xl font-bold z-40 text-center">
+            <span className=" rainbow-hover">김승원</span>
             입니다.
           </h2>
+
           <div className="mt-20 lg:mt-40 border-[#F0EFEB] border-4 w-16 h-28 lg:w-20 lg:h-32 rounded-full flex justify-center">
             <div className="w-2 h-6 lg:h-8 bg-[#F0EFEB] rounded-full mt-4 lg:mt-4 animate-bounceDown"></div>
           </div>
