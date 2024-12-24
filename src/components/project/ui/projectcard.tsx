@@ -23,20 +23,17 @@ export const ProjectCard = ({
     <div
       className="flex flex-col gap-2 border border-[var(--badge)] text-[#232323]
       rounded-2xl shadow-sm hover:shadow-2xl hover:scale-105 transition-all duration-300 ease-in-out font-pretendard relative group
-      sm:flex-row sm:gap-4 lg:flex-col"
+      sm:flex-row sm:gap-4 lg:flex-col overflow-hidden"
     >
-      <Link href={link} className="h-full w-full">
-        <div className="p-4 md:p-8 cursor-pointer flex flex-col gap-2 h-full">
-          <div className="relative w-full h-[200px] md:h-[240px] lg:h-[280px]">
-            <Image
-              src={image}
-              alt={title}
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 33vw"
-              style={{ objectFit: "cover", borderRadius: "0.5rem" }}
-            />
-          </div>
-          <div className="flex justify-start items-center gap-1 mt-2 lg:mt-3">
+      <Link href={link} className="flex flex-col h-full w-full">
+        {/* 이미지 컨테이너 */}
+        <div className="relative w-full h-[200px] md:h-[240px] lg:h-[280px]">
+          <Image src={image} alt={title} fill className="object-cover" />
+        </div>
+
+        {/* 텍스트 영역 */}
+        <div className="flex flex-col flex-grow p-4 cursor-pointer gap-2">
+          <div className="flex justify-start items-center gap-1">
             <h1 className="text-lg md:text-xl lg:text-2xl font-freesentation">
               {title}
             </h1>
@@ -53,11 +50,11 @@ export const ProjectCard = ({
               {date?.start} - {date?.end}
             </p>
           )}
-          <p className="text-xs md:text-sm lg:text-base flex-grow">
+          <p className="text-xs md:text-sm lg:text-base flex-grow hidden sm:flex">
             {description}
           </p>
 
-          <div className="gap-1 flex-wrap hidden md:flex">
+          <div className="gap-1 flex-wrap hidden sm:flex">
             {stack?.map((item) => (
               <Badge key={item} text={item} size="s" type="outline" />
             ))}

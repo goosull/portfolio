@@ -45,7 +45,7 @@ export const Intro = () => {
             입니다.
           </h2>
 
-          <div className="mt-20 lg:mt-40 border-[#F0EFEB] border-4 w-16 h-28 lg:w-15 lg:h-24 rounded-full flex justify-center">
+          <div className="mt-20 lg:mt-40 border-[#F0EFEB] border-4 w-16 h-28 lg:w-15 lg:h-24 rounded-full justify-center hidden lg:flex">
             <div className="w-2 h-4 lg:h-6 bg-[#F0EFEB] rounded-full mt-4 animate-bounceDown"></div>
           </div>
         </div>

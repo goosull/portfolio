@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <Intro />
-      <div className="z-50 bg-[#F0EFEB] w-screen absolute top-[calc(100vh]">
+      {/* <div className="z-50 bg-[#F0EFEB] absolute top-[calc(100vh] w-[calc(100%)]">
         <Image
           src="/mountain.svg"
           alt="about"
@@ -17,9 +17,9 @@ export default function Home() {
             objectFit: "cover",
           }}
         />
-      </div>
+      </div> */}
       <div className="px-6 lg:px-40 pt-[var(--header-height)] max-w-[calc(100%-4rem)] mx-auto">
-        <main className="min-h-full flex flex-col gap-40 lg:gap-80 pt-40">
+        <main className="min-h-full flex flex-col gap-40 lg:gap-80 pt-20 lg:pt-40">
           <About />
           <Project />
           <h1>Home</h1>
