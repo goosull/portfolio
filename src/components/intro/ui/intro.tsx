@@ -16,7 +16,7 @@ const BUBBLE_KEYFRAMES = [
 export const Intro = () => {
   return (
     <div>
-      <div className="relative h-[calc(100vh)] flex items-end bg-[#232323] overflow-hidden text-[#F0EFEB]">
+      <div className="relative h-[calc(120vh)] flex items-end bg-[#232323] overflow-hidden text-[#F0EFEB]">
         {BUBBLE_KEYFRAMES.map((keyframe, index) => (
           <div
             key={index}

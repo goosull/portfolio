@@ -18,7 +18,7 @@ export default function Home() {
           }}
         />
       </div> */}
-      <div className="px-6 lg:px-40 pt-[var(--header-height)] max-w-[calc(100%-4rem)] mx-auto">
+      <div className="px-6 lg:px-20 2xl:px-80 pt-[var(--header-height)] max-w-[calc(100%-4rem)] mx-auto">
         <main className="min-h-full flex flex-col gap-40 lg:gap-80 pt-20 lg:pt-40">
           <About />
           <Project />
