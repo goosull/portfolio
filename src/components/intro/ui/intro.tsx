@@ -24,7 +24,6 @@ export const Intro = () => {
             key={index}
             className={`absolute rounded-full bg-white opacity-30 ${keyframe} z-30`}
             style={{
-              // Bubble 크기를 화면 크기에 비례하여 설정
               width: `${1 + index * 0.5}vw`,
               height: `${1 + index * 0.5}vw`,
               left: `${Math.random() * 100}%`,
@@ -52,14 +51,17 @@ export const Intro = () => {
             <div className="w-2 h-4 lg:h-6 bg-[#F0EFEB] rounded-full mt-4 animate-bounceDown"></div>
           </div>
         </div>
-        <div className="min-w-full w-full h-auto flex items-center justify-center bg-[#F0EFEB]">
+        <div className="h-auto flex items-center justify-center bg-[#F0EFEB]">
           <Image
             src="/mountain.svg"
             alt="about"
-            layout="responsive"
             width={6020}
             height={1080}
-            objectFit="cover"
+            style={{
+              width: "100%",
+              height: "auto",
+              objectFit: "cover",
+            }}
           />
         </div>
       </div>
