@@ -50,19 +50,19 @@ export const Intro = () => {
           <div className="mt-20 lg:mt-40 border-[#F0EFEB] border-4 w-16 h-28 lg:w-15 lg:h-24 rounded-full flex justify-center">
             <div className="w-2 h-4 lg:h-6 bg-[#F0EFEB] rounded-full mt-4 animate-bounceDown"></div>
           </div>
-        </div>
-        <div className="h-auto flex items-center justify-center bg-[#F0EFEB] z-50 w-full">
-          <Image
-            src="/mountain.svg"
-            alt="about"
-            width={6020}
-            height={1080}
-            style={{
-              width: "100%",
-              height: "auto",
-              objectFit: "cover",
-            }}
-          />
+          <div className="absolute bottom-0 left-0 w-full z-50 bg-[#F0EFEB]">
+            <Image
+              src="/mountain.svg"
+              alt="about"
+              width={6020}
+              height={1080}
+              style={{
+                width: "100%",
+                height: "auto",
+                objectFit: "cover",
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>
