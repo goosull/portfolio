@@ -21,43 +21,43 @@ export const ProjectCard = ({
 }: ProjectCardProps) => {
   return (
     <div
-      className="flex flex-col gap-4 border-2 border-[var(--badge)] text-[#232323]
-      rounded-[2rem] shadow-sm hover:shadow-2xl hover:scale-105 transition-all duration-300 ease-in-out font-pretendard relative group
-      sm:flex-row sm:gap-6 lg:flex-col"
+      className="flex flex-col gap-2 border border-[var(--badge)] text-[#232323]
+      rounded-2xl shadow-sm hover:shadow-2xl hover:scale-105 transition-all duration-300 ease-in-out font-pretendard relative group
+      sm:flex-row sm:gap-4 lg:flex-col"
     >
       <Link href={link} className="h-full w-full">
-        <div className="p-4 md:p-6 lg:p-8 cursor-pointer flex flex-col gap-3 h-full">
-          <div className="relative w-full h-[200px] md:h-[250px] lg:h-[350px]">
+        <div className="p-4 md:p-8 cursor-pointer flex flex-col gap-2 h-full">
+          <div className="relative w-full h-[200px] md:h-[240px] lg:h-[280px]">
             <Image
               src={image}
               alt={title}
               fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              style={{ objectFit: "cover", borderRadius: "1rem" }}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 33vw"
+              style={{ objectFit: "cover", borderRadius: "0.5rem" }}
             />
           </div>
-          <div className="flex justify-start items-center gap-2 mt-3 lg:mt-4">
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-freesentation">
+          <div className="flex justify-start items-center gap-1 mt-2 lg:mt-3">
+            <h1 className="text-lg md:text-xl lg:text-2xl font-freesentation">
               {title}
             </h1>
             <img
-              width="25"
-              height="25"
+              width="16"
+              height="16"
               src="https://img.icons8.com/ios-filled/50/up-right-arrow.png"
               alt="up-right-arrow"
-              className="transform group-hover:translate-x-2 group-hover:-translate-y-2 transition-all duration-300 ease-in-out"
+              className="transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 ease-in-out"
             />
           </div>
           {date && (
-            <p className="text-sm md:text-md lg:text-lg text-[#666666]">
+            <p className="text-xs md:text-sm lg:text-base text-[#666666]">
               {date?.start} - {date?.end}
             </p>
           )}
-          <p className="text-sm md:text-lg lg:text-xl flex-grow">
+          <p className="text-xs md:text-sm lg:text-base flex-grow">
             {description}
           </p>
 
-          <div className="gap-2 flex-wrap hidden md:flex">
+          <div className="gap-1 flex-wrap hidden md:flex">
             {stack?.map((item) => (
               <Badge key={item} text={item} size="s" type="outline" />
             ))}

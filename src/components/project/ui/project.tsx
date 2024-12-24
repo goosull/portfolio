@@ -28,7 +28,7 @@ export const Project = () => {
       <Badge text="PROJECT" type="primary">
         <IoChevronForwardOutline />
       </Badge>
-      <div className="grid gap-16 md:grid-cols-2 md:grid-rows-2 grid-cols-1 grid-rows-1">
+      <div className="grid gap-8 lg:gap-16 lg:grid-cols-2 lg:grid-rows-2 grid-cols-1 grid-rows-1">
         {projects.map((project) => (
           <ProjectCard
             key={project.id}

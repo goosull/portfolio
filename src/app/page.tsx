@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <Intro />
-      <div className="px-10 md:px-32 pt-[var(--header-height)] max-w-[1600px] mx-auto">
+      <div className="px-16 md:px-60 pt-[var(--header-height)] max-w-[1600px] mx-auto">
         <main className="min-h-full flex flex-col gap-80 pt-40">
           <About />
           <Project />
