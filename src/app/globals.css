@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  background: #f0efeb;
+  --header-height: 60px;
+  --badge: #1d3557;
+  --badge-hover: #003566;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@font-face {
+  font-family: "Freesentation-9Black";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2")
+    format("woff2");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 400% 400%;
+  }
+}
+
+.rainbow-hover {
+  animation: none;
+  transition: all 0.3s ease;
+}
+
+.rainbow-hover:hover {
+  background: linear-gradient(
+    135deg,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet,
+    red
+  );
+  background-size: 400%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: rainbow 5s linear infinite;
+  color: transparent;
+}
