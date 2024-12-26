@@ -73,7 +73,7 @@ export const Header = () => {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 w-full px-10 h-[var(--header-height)] z-50 flex items-center justify-between transition-all duration-300 ease-in-out"
+        "fixed top-0 left-0 w-full px-6 md:px-10 h-[var(--header-height)] z-50 flex items-center justify-between transition-all duration-300 ease-in-out"
       )}
     >
       <div
