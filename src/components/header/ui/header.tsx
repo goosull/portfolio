@@ -14,13 +14,21 @@ export const Header = () => {
 
   // pathname 변경 시 scroll 위치 복원
   useEffect(() => {
-    const prevScrollPosition = getHomeScrollPosition(pathname);
-    console.log(prevScrollPosition, "prevScrollPosition", pathname, "pathname");
-
-    if (prevScrollPosition !== null && typeof window !== "undefined") {
-      setTimeout(() => {
-        window.scrollTo({ top: prevScrollPosition, behavior: "instant" });
-      }, 100); // setTimeout으로 비동기 호출
+    if (typeof window !== "undefined") {
+      const prevScrollPosition = getHomeScrollPosition(pathname);
+      // console.log(
+      //   prevScrollPosition,
+      //   "prevScrollPosition",
+      //   pathname,
+      //   "pathname"
+      // );
+      if (pathname === "/" && prevScrollPosition !== null) {
+        setTimeout(() => {
+          window.scrollTo({ top: prevScrollPosition, behavior: "instant" });
+        }, 100); // setTimeout으로 비동기 호출
+      } else {
+        window.scrollTo({ top: 0, behavior: "instant" });
+      }
     }
 
     setScrollFinish(true);
@@ -35,7 +43,7 @@ export const Header = () => {
     if (!scrollFinish) return;
 
     const handleScroll = () => {
-      console.log(window.scrollY, "window.scrollY", pathname, "pathname");
+      // console.log(window.scrollY, "window.scrollY", pathname, "pathname");
       setScrollPosition(window.scrollY);
       setHomeScrollPosition(window.scrollY, pathname);
     };
