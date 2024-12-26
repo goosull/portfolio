@@ -1,57 +1,57 @@
 "use client";
 
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { cn, useScrollStore } from "@/shared";
 
 export const Header = () => {
   const [size, setSize] = useState(0);
-  const [scroll, setScroll] = useState(0);
-  const [target, setTarget] = useState(null);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [scrollFinish, setScrollFinish] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  const { homeScrollPosition, setHomeScrollPosition } = useScrollStore();
+  const { setHomeScrollPosition, getHomeScrollPosition } = useScrollStore();
 
+  // pathname 변경 시 scroll 위치 복원
   useEffect(() => {
+    const prevScrollPosition = getHomeScrollPosition(pathname);
+    console.log(prevScrollPosition, "prevScrollPosition", pathname, "pathname");
+
+    if (prevScrollPosition !== null && typeof window !== "undefined") {
+      setTimeout(() => {
+        window.scrollTo({ top: prevScrollPosition, behavior: "instant" });
+      }, 100); // setTimeout으로 비동기 호출
+    }
+
+    setScrollFinish(true);
+  }, [pathname, getHomeScrollPosition]);
+
+  // scroll 이벤트 처리
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
     setSize(window.innerHeight);
 
+    if (!scrollFinish) return;
+
     const handleScroll = () => {
-      setScroll(window.scrollY);
+      console.log(window.scrollY, "window.scrollY", pathname, "pathname");
+      setScrollPosition(window.scrollY);
+      setHomeScrollPosition(window.scrollY, pathname);
     };
 
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (pathname.split("/")[1]) {
-      // console.log(`.${pathname.split("/")[1]}`, "pathname.split(/)[1]");
-      setHomeScrollPosition(`.${pathname.split("/")[1]}`);
-    }
-  }, [pathname, setHomeScrollPosition]);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [pathname, setHomeScrollPosition, scrollFinish]);
 
   const handleHomeClick = () => {
     if (pathname !== "/") {
       router.push("/");
     }
+  };
 
-    console.log(homeScrollPosition, "homeScrollPosition");
-    if (homeScrollPosition) {
-      setTimeout(() => {
-        const target = document.querySelector(homeScrollPosition);
-        console.log(target, "target");
-        if (target) {
-          const offsetTop = target.getBoundingClientRect().top + window.scrollY - 100;
-          window.scrollTo({ top: offsetTop, behavior: "smooth" });
-        }
-      }, 500);
-      setHomeScrollPosition(null);
-    } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+  const handleUpClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -63,10 +63,15 @@ export const Header = () => {
       <div
         className={cn(
           "flex items-center justify-between h-full w-full",
-          scroll > size * 1.2 ? "bg-[#F0EFEB] border-y-0 border-b border-[#232333] text-[#232333]" : "text-[#F0EFEB]"
+          scrollPosition > size * 1.2
+            ? "bg-[#F0EFEB] border-y-0 border-b border-[#232333] text-[#232333]"
+            : "text-[#F0EFEB]"
         )}
       >
-        <button className="ml-4" onClick={handleHomeClick}>
+        <button
+          className="ml-4"
+          onClick={pathname === "/" ? handleUpClick : handleHomeClick}
+        >
           Home
         </button>
         <h1 className="text-2xl">PORTFOLIO</h1>

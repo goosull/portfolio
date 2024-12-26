@@ -1,10 +1,11 @@
-import { Intro, About, Project, Mail } from "@/components";
+import { Header, Intro, About, Project, Mail } from "@/components";
 import { Badge } from "@/shared";
 import { IoChevronForwardOutline } from "react-icons/io5";
 
 export default function Home() {
   return (
     <div className="intro min-h-screen">
+      <Header />
       <Intro />
       {/* <div className="z-50 bg-[#F0EFEB] absolute top-[calc(100vh] w-[calc(100%)]">
         <Image
