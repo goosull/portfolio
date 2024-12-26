@@ -24,10 +24,7 @@ export const Project = () => {
   }
 
   return (
-    <div className="project flex flex-col gap-20">
-      <Badge text="PROJECT" type="primary">
-        <IoChevronForwardOutline />
-      </Badge>
+    <div className="flex flex-col gap-20">
       <div className="grid gap-8 md:gap-16 md:grid-cols-2 md:grid-rows-2 grid-cols-1 grid-rows-1">
         {projects.map((project) => (
           <ProjectCard
@@ -37,9 +34,7 @@ export const Project = () => {
             image={project.project_image || ""}
             link={project.project_path || ""}
             stack={
-              typeof project.project_stack === "object" &&
-              project.project_stack !== null &&
-              "data" in project.project_stack
+              typeof project.project_stack === "object" && project.project_stack !== null && "data" in project.project_stack
                 ? (project.project_stack as { data: string[] }).data
                 : []
             }

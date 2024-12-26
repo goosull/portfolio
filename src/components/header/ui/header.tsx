@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { cn, useScrollStore } from "@/shared";
 
 export const Header = () => {
+  const [size, setSize] = useState(0);
   const [scroll, setScroll] = useState(0);
   const [target, setTarget] = useState(null);
   const pathname = usePathname();
@@ -12,12 +13,10 @@ export const Header = () => {
   const { homeScrollPosition, setHomeScrollPosition } = useScrollStore();
 
   useEffect(() => {
+    setSize(window.innerHeight);
+
     const handleScroll = () => {
       setScroll(window.scrollY);
-
-      if (pathname.split("/")[1]) {
-        setHomeScrollPosition(`.${pathname.split("/")[1]}`);
-      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -25,38 +24,33 @@ export const Header = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [pathname, setHomeScrollPosition]);
+  }, []);
 
   useEffect(() => {
-    if (homeScrollPosition && pathname === "/") {
-      const target = document.querySelector(homeScrollPosition);
-
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth" });
-        window.scrollBy(0, -100);
-      }
+    if (pathname.split("/")[1]) {
+      // console.log(`.${pathname.split("/")[1]}`, "pathname.split(/)[1]");
+      setHomeScrollPosition(`.${pathname.split("/")[1]}`);
     }
-  }, [homeScrollPosition, pathname]);
+  }, [pathname, setHomeScrollPosition]);
 
   const handleHomeClick = () => {
     if (pathname !== "/") {
       router.push("/");
-
-      return;
     }
 
-    const scrollStep = -window.scrollY / 25;
-
-    if (window.scrollY > 0) {
-      const scrollInterval = setInterval(() => {
-        if (window.scrollY > 500) {
-          window.scrollBy(0, scrollStep * 2);
-        } else if (window.scrollY !== 0) {
-          window.scrollBy(0, scrollStep);
-        } else {
-          clearInterval(scrollInterval);
+    console.log(homeScrollPosition, "homeScrollPosition");
+    if (homeScrollPosition) {
+      setTimeout(() => {
+        const target = document.querySelector(homeScrollPosition);
+        console.log(target, "target");
+        if (target) {
+          const offsetTop = target.getBoundingClientRect().top + window.scrollY - 100;
+          window.scrollTo({ top: offsetTop, behavior: "smooth" });
         }
-      }, 15);
+      }, 500);
+      setHomeScrollPosition(null);
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
@@ -69,9 +63,7 @@ export const Header = () => {
       <div
         className={cn(
           "flex items-center justify-between h-full w-full",
-          scroll > 1500
-            ? "bg-[#F0EFEB] border-y-0 border-b border-[#232333] text-[#232333]"
-            : "text-[#F0EFEB]"
+          scroll > size * 1.2 ? "bg-[#F0EFEB] border-y-0 border-b border-[#232333] text-[#232333]" : "text-[#F0EFEB]"
         )}
       >
         <button className="ml-4" onClick={handleHomeClick}>

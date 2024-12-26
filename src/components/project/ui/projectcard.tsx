@@ -11,14 +11,7 @@ interface ProjectCardProps {
   date?: { start: string; end: string };
 }
 
-export const ProjectCard = ({
-  title,
-  description,
-  image,
-  link,
-  stack,
-  date,
-}: ProjectCardProps) => {
+export const ProjectCard = ({ title, description, image, link, stack, date }: ProjectCardProps) => {
   return (
     <div
       className="flex flex-col gap-2 border border-[var(--badge)] text-[#232323]
@@ -28,15 +21,21 @@ export const ProjectCard = ({
       <Link href={link} className="flex flex-col h-full w-full">
         {/* 이미지 컨테이너 */}
         <div className="relative w-full h-[200px] md:h-[240px] lg:h-[280px]">
-          <Image src={image} alt={title} fill className="object-cover" />
+          <Image
+            src={image}
+            alt={title}
+            fill
+            sizes="(max-width: 768px) 100vw, 
+                   (max-width: 1200px) 50vw, 
+                   33vw"
+            className="object-cover"
+          />
         </div>
 
         {/* 텍스트 영역 */}
         <div className="flex flex-col flex-grow p-4 cursor-pointer gap-2">
           <div className="flex justify-start items-center gap-1">
-            <h1 className="text-lg md:text-xl lg:text-2xl font-freesentation">
-              {title}
-            </h1>
+            <h1 className="text-lg md:text-xl lg:text-2xl font-freesentation">{title}</h1>
             <img
               width="16"
               height="16"
@@ -50,9 +49,7 @@ export const ProjectCard = ({
               {date?.start} - {date?.end}
             </p>
           )}
-          <p className="text-xs md:text-sm lg:text-base flex-grow hidden sm:flex">
-            {description}
-          </p>
+          <p className="text-xs md:text-sm lg:text-base flex-grow hidden sm:flex">{description}</p>
 
           <div className="gap-1 flex-wrap hidden sm:flex">
             {stack?.map((item) => (
