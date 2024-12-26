@@ -59,7 +59,15 @@ export const Header = () => {
   };
 
   const handleUpClick = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const scrollStep = -window.scrollY / 25;
+
+    const scrollInterval = setInterval(() => {
+      if (window.scrollY !== 0) {
+        window.scrollBy(0, scrollStep);
+      } else {
+        clearInterval(scrollInterval);
+      }
+    }, 10);
   };
 
   return (
