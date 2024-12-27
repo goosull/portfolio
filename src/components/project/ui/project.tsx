@@ -1,8 +1,6 @@
 "use client";
 
-import { IoChevronForwardOutline } from "react-icons/io5";
 import { useEffect, useState } from "react";
-import { Badge } from "@/shared";
 import { ProjectCard } from "..";
 import type { Database } from "@/shared";
 import { getProject } from "../api";

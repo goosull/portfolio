@@ -4,7 +4,11 @@ import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { cn, useScrollStore } from "@/shared";
 
-export const Header = () => {
+interface HeaderProps {
+  type?: "default" | "page";
+}
+
+export const Header = ({ type = "default" }: HeaderProps) => {
   const [size, setSize] = useState(0);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [scrollFinish, setScrollFinish] = useState(false);
@@ -69,7 +73,11 @@ export const Header = () => {
       <div
         className={cn(
           "flex items-center justify-between h-full w-full",
-          scrollPosition > size * 1.2 ? "bg-[#F0EFEB] border-y-0 border-b border-[#232333] text-[#232333]" : "text-[#F0EFEB]"
+          type === "default"
+            ? scrollPosition > size * 1.2
+              ? "bg-[#F0EFEB] border-y-0 border-b border-[#232333] text-[#232333]"
+              : "text-[#F0EFEB]"
+            : "bg-[#F0EFEB] border-y-0 border-b border-[#232333] text-[#232333]"
         )}
       >
         <button className="ml-4" onClick={pathname === "/" ? handleUpClick : handleHomeClick}>

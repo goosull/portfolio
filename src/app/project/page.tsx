@@ -6,7 +6,6 @@ export default function Home() {
       <Header type="page" />
       <div className="px-6 lg:px-20 2xl:px-[16rem] pt-[var(--header-height)] max-w-[1600px] mx-auto">
         <main className="min-h-full flex flex-col gap-80 pt-40">
-          <About />
           <h1>Home</h1>
           <h1>Home</h1>
           <h1>Home</h1>
