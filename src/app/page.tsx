@@ -24,9 +24,12 @@ export default function Home() {
         <main className="min-h-full flex flex-col gap-40 lg:gap-80 pt-20 lg:pt-40">
           <About />
           <div className="flex flex-col gap-20">
-            <Badge text="PROJECT" type="primary" className="project">
-              <IoChevronForwardOutline />
-            </Badge>
+            <div className="flex items-center justify-between">
+              <Badge text="# PROJECT" type="primary" className="project" />
+              <Badge text="" type="outline" className="" link="/project">
+                <IoChevronForwardOutline className="text-3xl text-[#232323]" />
+              </Badge>
+            </div>
             <Project />
           </div>
           <h1>Home</h1>

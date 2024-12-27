@@ -16,22 +16,20 @@ export const Header = () => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const prevScrollPosition = getHomeScrollPosition(pathname);
-      // console.log(
-      //   prevScrollPosition,
-      //   "prevScrollPosition",
-      //   pathname,
-      //   "pathname"
-      // );
+
       if (pathname === "/" && prevScrollPosition !== null) {
+        console.log(prevScrollPosition, "prevScrollPosition", pathname, "pathname");
         setTimeout(() => {
-          window.scrollTo({ top: prevScrollPosition, behavior: "instant" });
+          window.scrollTo({ top: prevScrollPosition, behavior: "smooth" });
         }, 100); // setTimeout으로 비동기 호출
       } else {
         window.scrollTo({ top: 0, behavior: "instant" });
       }
-    }
 
-    setScrollFinish(true);
+      setTimeout(() => {
+        setScrollFinish(true);
+      }, 1000);
+    }
   }, [pathname, getHomeScrollPosition]);
 
   // scroll 이벤트 처리
@@ -59,15 +57,7 @@ export const Header = () => {
   };
 
   const handleUpClick = () => {
-    const scrollStep = -window.scrollY / 25;
-
-    const scrollInterval = setInterval(() => {
-      if (window.scrollY !== 0) {
-        window.scrollBy(0, scrollStep);
-      } else {
-        clearInterval(scrollInterval);
-      }
-    }, 10);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -79,15 +69,10 @@ export const Header = () => {
       <div
         className={cn(
           "flex items-center justify-between h-full w-full",
-          scrollPosition > size * 1.2
-            ? "bg-[#F0EFEB] border-y-0 border-b border-[#232333] text-[#232333]"
-            : "text-[#F0EFEB]"
+          scrollPosition > size * 1.2 ? "bg-[#F0EFEB] border-y-0 border-b border-[#232333] text-[#232333]" : "text-[#F0EFEB]"
         )}
       >
-        <button
-          className="ml-4"
-          onClick={pathname === "/" ? handleUpClick : handleHomeClick}
-        >
+        <button className="ml-4" onClick={pathname === "/" ? handleUpClick : handleHomeClick}>
           Home
         </button>
         <h1 className="text-2xl">PORTFOLIO</h1>
