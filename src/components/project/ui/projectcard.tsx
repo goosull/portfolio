@@ -28,12 +28,12 @@ export const ProjectCard = ({ title, description, image, link, stack, date }: Pr
             sizes="(max-width: 768px) 100vw, 
                    (max-width: 1200px) 50vw, 
                    33vw"
-            className="object-cover"
+            className="object-cover group-hover:scale-105 transition-all duration-300 ease-in-out"
           />
         </div>
 
         {/* 텍스트 영역 */}
-        <div className="flex flex-col flex-grow p-4 cursor-pointer gap-2">
+        <div className="flex flex-col flex-grow p-2 md:p-4 cursor-pointer gap-2">
           <div className="flex justify-start items-center gap-1">
             <h1 className="text-lg md:text-xl lg:text-2xl font-freesentation">{title}</h1>
             <img

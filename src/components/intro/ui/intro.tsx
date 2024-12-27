@@ -28,18 +28,14 @@ export const Intro = () => {
             }}
           ></div>
         ))}
-        <div className="absolute z-40 w-full h-full top-40 left-0 flex flex-col items-center gap-4 px-4 md:top-60">
-          <h1 className="text-[3rem] md:text-[5rem] font-bold text-center">
-            안녕하세요
-          </h1>
+        <div className="absolute z-40 w-full h-full top-40 left-0 flex flex-col items-center gap-4 px-4 md:top-60 xl:top-80 text-3xl md:text-5xl xl:text-6xl font-bold">
+          <h1 className="text-[3rem] md:text-[5rem] xl-text-[6rem] font-bold text-center">안녕하세요</h1>
           <span className="flex flex-wrap justify-center">
-            <h2 className="text-3xl md:text-5xl font-bold">항상&nbsp;</h2>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#FFD700]">
-              발전하고자&nbsp;
-            </h2>
-            <h2 className="text-3xl md:text-5xl font-bold">하는</h2>
+            <h2>항상&nbsp;</h2>
+            <h2 className="text-[#FFD700]">발전하고자&nbsp;</h2>
+            <h2 className="font-bold">하는</h2>
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold z-40 text-center">
+          <h2 className="z-40 text-center">
             프론트엔드 개발자&nbsp;
             <span className=" rainbow-hover">김승원</span>
             입니다.

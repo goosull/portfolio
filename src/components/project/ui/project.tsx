@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { IoChevronForwardOutline } from "react-icons/io5";
+import { Badge } from "@/shared";
 import { ProjectCard } from "..";
 import type { Database } from "@/shared";
 import { getProject } from "../api";
@@ -22,8 +24,14 @@ export const Project = () => {
   }
 
   return (
-    <div className="flex flex-col gap-20">
-      <div className="grid gap-8 md:gap-16 md:grid-cols-2 md:grid-rows-2 grid-cols-1 grid-rows-1">
+    <div className="flex flex-col gap-16 md:gap-20">
+      <div className="flex flex-col gap-6 justify-between md:flex-row md:items-end">
+        <Badge text="# PROJECT" type="primary" className="project" />
+        <Badge text="프로젝트 더 보러가기" type="outline" className="cursor-pointer" link="/project" size="m">
+          <IoChevronForwardOutline className="font-bold text-[#232323]" />
+        </Badge>
+      </div>
+      <div className="grid gap-8 md:gap-16 md:grid-cols-2 md:grid-rows-3 grid-cols-1 grid-rows-1">
         {projects.map((project) => (
           <ProjectCard
             key={project.id}

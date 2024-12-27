@@ -1,6 +1,4 @@
 import { Header, Intro, About, Project, Experience, Mail } from "@/components";
-import { Badge } from "@/shared";
-import { IoChevronForwardOutline } from "react-icons/io5";
 
 export default function Home() {
   return (
@@ -11,12 +9,6 @@ export default function Home() {
         <main className="min-h-full flex flex-col gap-40 lg:gap-80 pt-20 lg:pt-40">
           <About />
           <div className="flex flex-col gap-20">
-            <div className="flex items-center justify-between">
-              <Badge text="# PROJECT" type="primary" className="project" />
-              <Badge text="" type="outline" className="" link="/project">
-                <IoChevronForwardOutline className="text- 3xl text-[#232323]" />
-              </Badge>
-            </div>
             <Project />
           </div>
           <Experience />

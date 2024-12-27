@@ -87,7 +87,7 @@ export type Database = {
           exp_company: string;
           exp_department: string | null;
           exp_description: {
-            data: { header: string; body: string }[];
+            data: { header: string; body: string[] }[];
           };
           exp_end: number | null;
           exp_role: string | null;

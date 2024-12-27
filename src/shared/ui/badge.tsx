@@ -20,10 +20,10 @@ export const Badge = ({ text, type = "primary", size = "l", className, link, chi
       className={cn(
         "rounded-full w-max",
         type === "primary" && "bg-[var(--badge)] text-[#f0efeb]",
-        type === "outline" && "border-[var(--badge)] text-[var(--badge)] border-[0.5px] md:border-[2px]",
+        type === "outline" && "border-[var(--badge)] text-[var(--badge)] border-[0.5px] md:border-[1px]",
         size === "l" && "text-3xl md:text-4xl px-4 py-3",
-        size === "m" && "text-xl md:text-2xl px-3 py-2",
-        size === "s" && "text-xs md:text-sm font-bold font-pretendard px-2 py-1",
+        size === "m" && "text-sm md:text-base font-pretendard px-3 py-2",
+        size === "s" && "text-xs md:text-sm font-pretendard px-2 py-1",
         className
       )}
       onClick={() => {

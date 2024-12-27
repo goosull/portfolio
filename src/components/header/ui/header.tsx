@@ -21,7 +21,7 @@ export const Header = ({ type = "default" }: HeaderProps) => {
     if (typeof window !== "undefined") {
       const prevScrollPosition = getHomeScrollPosition(pathname);
 
-      if (pathname === "/" && prevScrollPosition !== null) {
+      if ((pathname === "/" || pathname === "/project") && prevScrollPosition !== null) {
         console.log(prevScrollPosition, "prevScrollPosition", pathname, "pathname");
         setTimeout(() => {
           window.scrollTo({ top: prevScrollPosition, behavior: "smooth" });
