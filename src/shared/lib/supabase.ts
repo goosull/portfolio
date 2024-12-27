@@ -36,6 +36,7 @@ export type Database = {
           profile_name: string;
           sns_github: string | null;
           sns_linkedin: string | null;
+          sns_blog: string | null;
         };
         Insert: {
           contact_email?: string | null;

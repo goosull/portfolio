@@ -7,6 +7,7 @@ import { getAbout, getEducation } from "../api";
 import { FaAddressCard, FaGraduationCap } from "react-icons/fa";
 import { FaPhone } from "react-icons/fa6";
 import { HiChatBubbleLeftEllipsis } from "react-icons/hi2";
+import { FiLink } from "react-icons/fi";
 
 type About = Database["public"]["Tables"]["About"]["Row"];
 type Education = Database["public"]["Tables"]["Education"]["Row"];
@@ -62,7 +63,7 @@ export const About = () => {
               <span className="font-bold min-w-20">이메일</span>
               <a href={`mailto:${about?.contact_email}`} className="flex items-center gap-1 text-[#232323] hover:underline">
                 {about?.contact_email}
-                <img width="16" height="16" src="https://img.icons8.com/ios-filled/50/link--v1.png" alt="link--v1" />
+                <FiLink />
               </a>
             </div>
           </div>
@@ -76,14 +77,21 @@ export const About = () => {
               <span className="font-bold min-w-20">링크드인</span>
               <a href={about?.sns_linkedin ?? undefined} className="flex items-center gap-1 text-[#232323] hover:underline">
                 {`linkedin/${about?.sns_linkedin?.split("/").pop()}`}
-                <img width="16" height="16" src="https://img.icons8.com/ios-filled/50/link--v1.png" alt="link--v1" />
+                <FiLink />
               </a>
             </div>
             <div className="flex flex-row gap-4 font-pretendard text-base xl:text-lg">
               <span className="font-bold min-w-20">깃허브</span>
               <a href={about?.sns_github ?? undefined} className="flex items-center gap-1 text-[#232323] hover:underline">
                 {`github/${about?.sns_github?.split("/").pop()}`}
-                <img width="16" height="16" src="https://img.icons8.com/ios-filled/50/link--v1.png" alt="link--v1" />
+                <FiLink />
+              </a>
+            </div>
+            <div className="flex flex-row gap-4 font-pretendard text-base xl:text-lg">
+              <span className="font-bold min-w-20">블로그</span>
+              <a href={about?.sns_blog ?? undefined} className="flex items-center gap-1 text-[#232323] hover:underline">
+                {`blog/${about?.sns_blog?.split("/")?.pop()}`}
+                <FiLink />
               </a>
             </div>
           </div>
