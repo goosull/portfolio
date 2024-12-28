@@ -64,7 +64,7 @@ export const ProjectList = () => {
 
             {/* Made at - visible on lg */}
             <span className="col-span-2 xl:col-span-1 text-base xl:text-lg text-[#565656] hidden lg:block">
-              {project.project_organization || "N/A"}
+              {project.project_organization || ""}
             </span>
 
             {/* Built with - visible on lg */}
