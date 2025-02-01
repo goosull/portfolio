@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Badge } from "@/shared";
 import type { Database } from "@/shared";
-import { getAbout, getEducation } from "../api";
+import { getAbout, getEducation } from "../../contact/api";
 import { FaAddressCard, FaGraduationCap } from "react-icons/fa";
 import { FaPhone } from "react-icons/fa6";
 import { HiChatBubbleLeftEllipsis } from "react-icons/hi2";
@@ -61,7 +61,10 @@ export const About = () => {
             </div>
             <div className="flex flex-row gap-4 font-pretendard text-base xl:text-lg">
               <span className="font-bold min-w-20">이메일</span>
-              <a href={`mailto:${about?.contact_email}`} className="flex items-center gap-1 text-[#232323] hover:underline">
+              <a
+                href={`mailto:${about?.contact_email}`}
+                className="flex items-center gap-1 text-[#232323] hover:underline"
+              >
                 {about?.contact_email}
                 <FiLink />
               </a>
@@ -75,21 +78,30 @@ export const About = () => {
             </div>
             <div className="flex flex-row gap-4 font-pretendard text-base xl:text-lg">
               <span className="font-bold min-w-20">링크드인</span>
-              <a href={about?.sns_linkedin ?? undefined} className="flex items-center gap-1 text-[#232323] hover:underline">
+              <a
+                href={about?.sns_linkedin ?? undefined}
+                className="flex items-center gap-1 text-[#232323] hover:underline"
+              >
                 {`linkedin/${about?.sns_linkedin?.split("/").pop()}`}
                 <FiLink />
               </a>
             </div>
             <div className="flex flex-row gap-4 font-pretendard text-base xl:text-lg">
               <span className="font-bold min-w-20">깃허브</span>
-              <a href={about?.sns_github ?? undefined} className="flex items-center gap-1 text-[#232323] hover:underline">
+              <a
+                href={about?.sns_github ?? undefined}
+                className="flex items-center gap-1 text-[#232323] hover:underline"
+              >
                 {`github/${about?.sns_github?.split("/").pop()}`}
                 <FiLink />
               </a>
             </div>
             <div className="flex flex-row gap-4 font-pretendard text-base xl:text-lg">
               <span className="font-bold min-w-20">블로그</span>
-              <a href={about?.sns_blog ?? undefined} className="flex items-center gap-1 text-[#232323] hover:underline">
+              <a
+                href={about?.sns_blog ?? undefined}
+                className="flex items-center gap-1 text-[#232323] hover:underline"
+              >
                 {`blog/${about?.sns_blog?.split("/")?.pop()}`}
                 <FiLink />
               </a>
@@ -105,7 +117,8 @@ export const About = () => {
               <span className="font-bold min-w-20">학력</span>
               {education?.map((edu) => (
                 <p key={edu.id}>
-                  {edu.edu_institute} {edu.edu_major} {edu.edu_degree} ({edu.edu_start ? `${edu.edu_start.split("-")[0]}` : ""} ~{" "}
+                  {edu.edu_institute} {edu.edu_major} {edu.edu_degree} (
+                  {edu.edu_start ? `${edu.edu_start.split("-")[0]}` : ""} ~{" "}
                   {edu.edu_end ? `${edu.edu_end.split("-")[0]})` : "재학 중)"}
                 </p>
               ))}

@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 :root {
-  background: #f0efeb;
+  background: #ffffff;
   --header-height: 60px;
   --badge: #1d3557;
-  --badge-hover: #003566;
+  --badge-hover: #1f416d;
 }
 
 html {

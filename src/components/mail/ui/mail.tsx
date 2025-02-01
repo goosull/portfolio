@@ -1,76 +1,80 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { FaPaperPlane } from "react-icons/fa6";
+import emailjs from "@emailjs/browser";
 
 export const Mail = () => {
-  const [senderEmail, setSenderEmail] = useState("");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
+  const form = useRef<HTMLFormElement>(null); // form 레퍼런스 생성
   const [status, setStatus] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch("/api/sendMail", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          from: senderEmail,
-          subject,
-          text: message,
-        }),
-      });
+    if (!form.current) return;
 
-      if (response.ok) {
-        setStatus("Email sent successfully!");
-      } else {
-        const errorData = await response.json();
-        setStatus(`Failed to send email: ${errorData.error}`);
-      }
+    try {
+      const serviceId = process.env.NEXT_PUBLIC_MAIL_SERVICE_ID!;
+      const templateId = process.env.NEXT_PUBLIC_MAIL_TEMPLATE_ID!;
+      const userId = process.env.NEXT_PUBLIC_MAIL_USER_ID!;
+
+      // emailjs를 통해 이메일 전송
+      await emailjs.sendForm(serviceId, templateId, form.current, userId);
+
+      setStatus("메일이 성공적으로 전송되었습니다.");
     } catch (error) {
-      console.error("Error:", error);
-      setStatus("An error occurred while sending the email.");
+      console.error("Email send error:", error);
+      setStatus("메일 전송에 실패하였습니다. 다시 시도해주세요.");
     }
   };
 
   return (
-    <div className="p-4 max-w-md mx-auto">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <input
-          type="email"
-          placeholder="Your Email"
-          value={senderEmail}
-          onChange={(e) => setSenderEmail(e.target.value)}
-          className="border p-2 rounded"
-          required
-        />
-        <input
-          type="text"
-          placeholder="Subject"
-          value={subject}
-          onChange={(e) => setSubject(e.target.value)}
-          className="border p-2 rounded"
-          required
-        />
-        <textarea
-          placeholder="Message"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          className="border p-2 rounded"
-          rows={5}
-          required
-        />
-        <button
-          type="submit"
-          className="bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+    <div className="flex flex-col items-center min-h-screen">
+      <div className="p-6 rounded w-full max-w-3xl">
+        <h1 className="text-2xl font-bold text-center mb-4">Contact Me</h1>
+        <p className="text-center text-gray-600 mb-6 font-pretendard">
+          저와 나누고 싶은 이야기가 있다면 편하게 메일을 보내주세요.
+          <br />
+          빠른 시일 내에 답변드리겠습니다.
+        </p>
+        <form
+          ref={form}
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-4"
         >
-          Send Email
-        </button>
-      </form>
-      {status && <p className="mt-4 text-center">{status}</p>}
+          <input
+            type="text"
+            name="name"
+            placeholder="이름 / 소속"
+            className="border border-stone-400 p-3 rounded bg-[#ffffff]"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="example@email.com"
+            className="border border-stone-400 p-3 rounded bg-[#ffffff]"
+            required
+          />
+          <textarea
+            name="message"
+            placeholder="메시지를 입력해주세요."
+            className="border border-stone-400 p-3 rounded h-60 bg-[#ffffff]"
+            rows={20}
+            required
+          />
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="bg-black text-white p-3 rounded hover:bg-gray-800 flex gap-2 items-center"
+            >
+              <FaPaperPlane />
+              Send Message
+            </button>
+          </div>
+        </form>
+        {status && <p className="mt-4 text-center text-gray-600">{status}</p>}
+      </div>
     </div>
   );
 };

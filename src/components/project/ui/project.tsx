@@ -13,7 +13,7 @@ export const Project = () => {
   const [projects, setProjects] = useState<Project[] | null>(null);
 
   useEffect(() => {
-    getProject({ size: 4, isCore: true }).then((data) => {
+    getProject({ size: 3, isCore: true }).then((data) => {
       setProjects(data);
       console.log(data.map((project) => project.project_stack));
     });
@@ -37,7 +37,7 @@ export const Project = () => {
           <IoChevronForwardOutline className="font-bold text-[#232323]" />
         </Badge>
       </div>
-      <div className="grid gap-8 md:gap-16 md:grid-cols-2 md:grid-rows-2 grid-cols-1 grid-rows-1">
+      <div className="grid gap-8 md:grid-cols-3 md:grid-rows-1 grid-cols-1 grid-rows-1">
         {projects.map((project) => (
           <ProjectCard
             key={project.id}

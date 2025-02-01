@@ -21,13 +21,21 @@ export const Header = ({ type = "default" }: HeaderProps) => {
     if (typeof window !== "undefined") {
       const prevScrollPosition = getHomeScrollPosition(pathname);
 
-      if ((pathname === "/" || pathname === "/project") && prevScrollPosition !== null) {
-        console.log(prevScrollPosition, "prevScrollPosition", pathname, "pathname");
+      if (
+        (pathname === "/" || pathname === "/project") &&
+        prevScrollPosition !== null
+      ) {
+        console.log(
+          prevScrollPosition,
+          "prevScrollPosition",
+          pathname,
+          "pathname"
+        );
         setTimeout(() => {
           window.scrollTo({ top: prevScrollPosition, behavior: "smooth" });
         }, 100); // setTimeout으로 비동기 호출
       } else {
-        window.scrollTo({ top: 0, behavior: "instant" });
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
 
       setTimeout(() => {
@@ -74,16 +82,18 @@ export const Header = ({ type = "default" }: HeaderProps) => {
         className={cn(
           "flex items-center justify-between h-full w-full",
           type === "default"
-            ? scrollPosition > size * 1.2
-              ? "bg-[#F0EFEB] border-y-0 border-b border-[#232333] text-[#232333]"
-              : "text-[#F0EFEB]"
-            : "bg-[#F0EFEB] border-y-0 border-b border-[#232333] text-[#232333]"
+            ? scrollPosition > size * 1.25
+              ? "bg-[#ffffff] border-y-0 border-b border-[#232333] text-[#232333]"
+              : "text-[#ffffff]"
+            : "bg-[#ffffff] border-y-0 border-b border-[#232333] text-[#232333]"
         )}
       >
-        <button className="ml-4" onClick={pathname === "/" ? handleUpClick : handleHomeClick}>
-          Home
+        <button
+          className="text-2xl"
+          onClick={pathname === "/" ? handleUpClick : handleHomeClick}
+        >
+          KIM SEUNGWON
         </button>
-        <h1 className="text-2xl">PORTFOLIO</h1>
       </div>
     </header>
   );

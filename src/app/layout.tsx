@@ -24,8 +24,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-screen w-screen min-h-screen min-w-screen max-w-screen max-h-screen overflow-x-hidden">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased font-freesentation w-full h-full`}>
+    <html
+      lang="en"
+      className="h-screen w-screen min-h-screen min-w-screen max-w-screen max-h-screen overflow-x-hidden [&::-webkit-scrollbar]:hidden"
+    >
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased font-freesentation w-full h-full`}
+      >
         {children}
         <Analytics />
       </body>

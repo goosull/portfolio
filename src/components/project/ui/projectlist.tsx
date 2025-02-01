@@ -29,7 +29,7 @@ export const ProjectList = () => {
       </div>
       <div className="flex flex-col text-[#232323] font-pretendard">
         {/* Header */}
-        <div className="grid grid-cols-12 text-base xl:text-lg font-semibold text-[#232323] gap-6 border-b pb-4">
+        <div className="grid grid-cols-12 text-base font-semibold text-[#232323] gap-6 border-b pb-4">
           <span className="col-span-3 sm:col-span-2 lg-col-span-1 xl:col-span-1">
             연도
           </span>
@@ -48,14 +48,14 @@ export const ProjectList = () => {
             className="grid grid-cols-12 gap-6 items-start border-b pb-4 pt-4"
           >
             {/* Year */}
-            <span className="col-span-3 sm:col-span-2 lg-col-span-1 xl:col-span-1 text-base xl:text-lg text-[#232323] font-medium">
+            <span className="col-span-3 sm:col-span-2 lg-col-span-1 xl:col-span-1 text-base  text-[#232323] font-medium">
               {new Date(project.project_end || "").getFullYear()}
             </span>
 
             {/* Project */}
             <a
               rel="noopener noreferrer"
-              className="col-span-9 sm:col-span-5 lg:col-span-3 text-base xl:text-lg text-[#232323] font-bold hover:underline flex flex-row items-center gap-2 group"
+              className="col-span-9 sm:col-span-5 lg:col-span-3 text-base text-[#232323] font-bold hover:underline flex flex-row items-center gap-2 group"
               href={`./${project.project_path}`}
             >
               <span>{project.project_title}</span>
@@ -63,7 +63,7 @@ export const ProjectList = () => {
             </a>
 
             {/* Made at - visible on lg */}
-            <span className="col-span-2 xl:col-span-1 text-base xl:text-lg text-[#565656] hidden lg:block">
+            <span className="col-span-2 xl:col-span-1 text-base text-[#232323] hidden lg:block">
               {project.project_organization || ""}
             </span>
 
@@ -74,14 +74,14 @@ export const ProjectList = () => {
               "data" in project.project_stack
                 ? (project.project_stack as { data: string[] }).data.map(
                     (item) => (
-                      <Badge key={item} text={item} size="s" type="outline" />
+                      <Badge key={item} text={item} size="s" type="disabled" />
                     )
                   )
                 : []}
             </div>
 
             {/* Link - visible on sm */}
-            <div className="lg:col-span-3 hidden text-base xl:text-lg sm:flex flex-row items-center gap-2 group hover:underline text-[#565656]">
+            <div className="lg:col-span-3 hidden text-base sm:flex flex-row items-center gap-2 group hover:underline text-[#565656]">
               <a
                 href={project.project_url || "#"}
                 target="_blank"

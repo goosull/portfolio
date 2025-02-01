@@ -3,5 +3,7 @@ export { Intro } from "./intro";
 export { About } from "./about";
 export { Project } from "./project";
 export { ProjectList } from "./project";
+export { Contact } from "./contact";
 export { Mail } from "./mail";
 export { Experience } from "./experience";
+export { Footer } from "./footer";
