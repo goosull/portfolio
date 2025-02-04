@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { cn, useScrollStore } from "@/shared";
+import { Badge, cn, useScrollStore } from "@/shared";
+import { IoChevronForwardOutline } from "react-icons/io5";
 
 interface HeaderProps {
   type?: "default" | "page";
@@ -94,6 +95,25 @@ export const Header = ({ type = "default" }: HeaderProps) => {
         >
           KIM SEUNGWON
         </button>
+        <Badge
+          text="이력서 보러가기"
+          type="outline"
+          className={cn(
+            "cursor-pointer",
+            scrollPosition > size * 1.25
+              ? "text-[#232323] border-[#232323]"
+              : "text-[#ffffff] border-[#ffffff]"
+          )}
+          link="/kim_seungwon_resume.pdf"
+          size="m"
+        >
+          <IoChevronForwardOutline
+            className={cn(
+              "font-bold",
+              scrollPosition > size * 1.25 ? "text-[#232323]" : "text-[#ffffff]"
+            )}
+          />
+        </Badge>
       </div>
     </header>
   );
