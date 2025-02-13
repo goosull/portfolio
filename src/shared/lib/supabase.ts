@@ -137,7 +137,9 @@ export type Database = {
           project_start: string | null;
           project_title: string;
           project_url: string | null;
+          project_git: string | null;
           project_icon: string | null;
+          project_contributions: string[] | null;
         };
         Insert: {
           id?: number;

@@ -40,7 +40,6 @@ export const useScrollStore = create<ScrollStore>((set, get) => ({
   getHomeScrollPosition: (path) => {
     const { homeScrollPositions } = get();
     const match = homeScrollPositions.find((entry) => entry.path === path);
-    console.log(homeScrollPositions, "homeScrollPositions", path, "path");
     return match ? match.position : null;
   },
 }));

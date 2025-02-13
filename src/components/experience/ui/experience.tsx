@@ -14,7 +14,6 @@ export const Experience = () => {
 
   useEffect(() => {
     getExperience().then((data) => {
-      console.log(data);
       setExperience(data);
     });
   }, []);

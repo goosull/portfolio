@@ -1,26 +1,31 @@
 import { supabase } from "@/shared";
 
-interface props {
+interface Props {
+  path?: string;
   size?: number;
   isCore?: boolean;
   orderBy?: string;
 }
 
-export const getProject = async ({ size, isCore, orderBy }: props) => {
-  const query = supabase.from("Project").select("*");
+export const getProject = async ({ path, size, isCore, orderBy }: Props) => {
+  let query = supabase.from("Project").select("*");
 
   if (isCore) {
-    query.eq("isCore", true);
+    query = query.eq("isCore", true);
+  }
+
+  if (path) {
+    query = query.eq("project_path", path);
   }
 
   if (size) {
-    query.limit(size);
+    query = query.limit(size);
   }
 
   if (orderBy) {
-    query.order(orderBy, { ascending: false });
+    query = query.order(orderBy, { ascending: false });
   } else {
-    query.order("id", { ascending: true });
+    query = query.order("id", { ascending: true });
   }
 
   const { data, error } = await query;

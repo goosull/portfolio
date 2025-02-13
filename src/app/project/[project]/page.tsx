@@ -1,11 +1,8 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import { Header, ProjectDetail } from "@/components";
 
 export default function Home() {
-  const path = usePathname();
-  console.log(path, "path");
   return (
     <div>
       <Header type="page" />
